@@ -23,14 +23,15 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
-            font-family: 'Roboto Mono', monospace;
+            /* Courier New is essential for perfect ASCII alignment */
+            font-family: "Courier New", Courier, "Roboto Mono", monospace; 
             margin: 0;
             padding: 20px;
             line-height: 1.6;
         }
 
         .container {
-            max-width: 1300px;
+            max-width: 1400px; /* Extra wide to prevent wrapping */
             margin: 0 auto;
         }
 
@@ -46,9 +47,10 @@
             border-radius: 5px;
             background: #111;
             box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+            font-weight: bold;
         }
 
-        h1, h2, h3 { color: var(--accent-cyan); }
+        h1, h2, h3 { color: var(--accent-cyan); font-family: 'Roboto Mono', monospace; }
         h2 { border-bottom: 2px solid #333; padding-bottom: 10px; margin-top: 40px;}
         
         .research-tag {
@@ -60,6 +62,7 @@
             font-size: 0.9em;
             margin-right: 5px;
             margin-bottom: 5px;
+            font-family: 'Roboto Mono', monospace;
         }
 
         a { color: var(--accent-blue); text-decoration: none; }
@@ -70,6 +73,7 @@
             padding: 15px;
             border-left: 3px solid var(--accent-yellow);
             margin: 20px 0;
+            font-family: 'Roboto Mono', monospace;
         }
 
         /* Blinking Cursor */
@@ -79,6 +83,8 @@
             color: var(--accent-green);
         }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        
+        nav { font-family: 'Roboto Mono', monospace; }
     </style>
 </head>
 <body>
@@ -95,22 +101,22 @@
     <br><br>
 
     <div class="terminal-logo">
-<span style="color: #555555;">+======================================================================================================================+</span>
-<span style="color: #555555;">|</span>  <span style="color: #ffffff; font-weight: bold;">STRUCTURAL FRAMEWORKS</span>                               <span style="color: #555555;">|</span>    <span style="color: #ffffff; font-weight: bold;">NANOMATERIALS</span>    <span style="color: #555555;">|</span>    <span style="color: #ffffff; font-weight: bold;">DYNAMICS</span>    <span style="color: #555555;">|</span>   <span style="color: #00ffff; font-weight: bold;">THEORY DEV.</span>          <span style="color: #555555;">|</span>
-<span style="color: #555555;">+======================================================================================================================+</span>
-<span style="color: #555555;">|</span>                                                                                                                      <span style="color: #555555;">|</span>
-<span style="color: #555555;">|</span>   <span style="color: #00ff00; font-weight: bold;">[ RESEARCH MODULES ]</span>                                    <span style="color: #4da6ff; font-weight: bold;">█████╗ ███╗   ██╗██████╗</span>                                   <span style="color: #555555;">|</span>
-<span style="color: #555555;">|</span>                                                           <span style="color: #4da6ff; font-weight: bold;">██╔══██╗████╗  ██║██╔══██╗</span>                                 <span style="color: #555555;">|</span>
-<span style="color: #555555;">|</span>   <span style="color: #ffffff;">&gt; Electronic structure of Plasmonic systems</span>             <span style="color: #4da6ff; font-weight: bold;">███████║██╔██╗ ██║██║  ██║</span>             <span style="color: #00ffff;">(A)</span><span style="color: #555555;">--</span><span style="color: #00ffff;">[n]</span><span style="color: #555555;">--</span><span style="color: #00ffff;">(B)</span>            <span style="color: #555555;">|</span>
-<span style="color: #555555;">|</span>   <span style="color: #ffffff;">&gt; Homogeneous & Heterogeneous Catalysis</span>                 <span style="color: #4da6ff; font-weight: bold;">██╔══██║██║╚██╗██║██║  ██║</span>                <span style="color: #ffff00;">|    |</span>            <span style="color: #555555;">|</span>
-<span style="color: #555555;">|</span>   <span style="color: #ffffff;">&gt; Valleytronics & Topological Materials</span>                 <span style="color: #4da6ff; font-weight: bold;">██║  ██║██║ ╚████║██████╔╝</span>             <span style="color: #4da6ff;">___V____V___</span>         <span style="color: #555555;">|</span>
-<span style="color: #555555;">|</span>   <span style="color: #ffffff;">&gt; Alignment of Bands</span>                                    <span style="color: #4da6ff; font-weight: bold;">╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝</span>             <span style="color: #555555;">/////////////</span>         <span style="color: #555555;">|</span>
-<span style="color: #555555;">|</span>   <span style="color: #ffffff;">&gt; Ab Initio MD & QM/MM</span>                                                                            <span style="color: #555555;">[ LATTICE ]</span>           <span style="color: #555555;">|</span>
-<span style="color: #555555;">|</span>   <span style="color: #ffffff;">&gt; Biomimetic Chemistry</span>                                                                                             <span style="color: #555555;">|</span>
-<span style="color: #555555;">|</span>                                                                                                                      <span style="color: #555555;">|</span>
-<span style="color: #555555;">|</span>   <span style="color: #00ff00; font-weight: bold;">[STATUS]: ONLINE</span>                                        <span style="color: #ffffff;">Architectures, Nanomaterials</span>       <span style="color: #00ffff; font-weight: bold;">      AND- Research      </span>   <span style="color: #555555;">|</span>
-<span style="color: #555555;">|</span>                                                           <span style="color: #ffffff;">& Dynamics Group</span>                                           <span style="color: #555555;">|</span>
-<span style="color: #555555;">+======================================================================================================================+</span>
+<span style="color: #555555;">+==========================================================================================================================+</span>
+<span style="color: #555555;">|</span>  <span style="color: #ffffff; font-weight: bold;">STRUCTURAL FRAMEWORKS</span>                                   <span style="color: #555555;">|</span>    <span style="color: #ffffff; font-weight: bold;">NANOMATERIALS</span>    <span style="color: #555555;">|</span>    <span style="color: #ffffff; font-weight: bold;">DYNAMICS</span>    <span style="color: #555555;">|</span>   <span style="color: #00ffff; font-weight: bold;">THEORY DEV.</span>          <span style="color: #555555;">|</span>
+<span style="color: #555555;">+==========================================================================================================================+</span>
+<span style="color: #555555;">|</span>                                                                                                                          <span style="color: #555555;">|</span>
+<span style="color: #555555;">|</span>   <span style="color: #00ff00; font-weight: bold;">[ RESEARCH MODULES ]</span>                                        <span style="color: #4da6ff; font-weight: bold;">█████╗ ███╗   ██╗██████╗</span>                                   <span style="color: #555555;">|</span>
+<span style="color: #555555;">|</span>                                                               <span style="color: #4da6ff; font-weight: bold;">██╔══██╗████╗  ██║██╔══██╗</span>                                 <span style="color: #555555;">|</span>
+<span style="color: #555555;">|</span>   <span style="color: #ffffff;">&gt; Electronic structure of Plasmonic systems</span>                 <span style="color: #4da6ff; font-weight: bold;">███████║██╔██╗ ██║██║  ██║</span>             <span style="color: #00ffff;">(A)</span><span style="color: #555555;">--</span><span style="color: #00ffff;">[n]</span><span style="color: #555555;">--</span><span style="color: #00ffff;">(B)</span>            <span style="color: #555555;">|</span>
+<span style="color: #555555;">|</span>   <span style="color: #ffffff;">&gt; Homogeneous & Heterogeneous Catalysis</span>                     <span style="color: #4da6ff; font-weight: bold;">██╔══██║██║╚██╗██║██║  ██║</span>                <span style="color: #ffff00;">|    |</span>            <span style="color: #555555;">|</span>
+<span style="color: #555555;">|</span>   <span style="color: #ffffff;">&gt; Valleytronics & Topological Materials</span>                     <span style="color: #4da6ff; font-weight: bold;">██║  ██║██║ ╚████║██████╔╝</span>             <span style="color: #4da6ff;">___V____V___</span>         <span style="color: #555555;">|</span>
+<span style="color: #555555;">|</span>   <span style="color: #ffffff;">&gt; Alignment of Bands</span>                                        <span style="color: #4da6ff; font-weight: bold;">╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝</span>             <span style="color: #555555;">/////////////</span>         <span style="color: #555555;">|</span>
+<span style="color: #555555;">|</span>   <span style="color: #ffffff;">&gt; Ab Initio MD & QM/MM</span>                                                                                <span style="color: #555555;">[ LATTICE ]</span>           <span style="color: #555555;">|</span>
+<span style="color: #555555;">|</span>   <span style="color: #ffffff;">&gt; Biomimetic Chemistry</span>                                                                                                 <span style="color: #555555;">|</span>
+<span style="color: #555555;">|</span>                                                                                                                          <span style="color: #555555;">|</span>
+<span style="color: #555555;">|</span>   <span style="color: #00ff00; font-weight: bold;">[STATUS]: ONLINE</span>                                            <span style="color: #ffffff;">Architectures, Nanomaterials</span>       <span style="color: #00ffff; font-weight: bold;">      AND- Research      </span>   <span style="color: #555555;">|</span>
+<span style="color: #555555;">|</span>                                                               <span style="color: #ffffff;">& Dynamics Group</span>                                           <span style="color: #555555;">|</span>
+<span style="color: #555555;">+==========================================================================================================================+</span>
     </div>
 
     <section id="about">
