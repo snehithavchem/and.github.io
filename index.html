@@ -73,24 +73,24 @@
     const startDelay = 1000; 
     const promptText = "root@AND-Research:~$";
     
-    // YOUR EXACT ASCII ART DATA
+    // YOUR EXACT ASCII ART DATA (ALIGNED)
     const asciiLines = [
-        `<span style="color: #555555;">+======================================================================================================================</span>`,
-        `<span style="color: #555555;">|</span>  <span style="color: #ffffff; font-weight: bold;">STRUCTURAL FRAMEWORKS</span>                              <span style="color: #555555;">|</span>    <span style="color: #ffffff; font-weight: bold;">NANOMATERIALS</span>    <span style="color: #555555;">|</span>    <span style="color: #ffffff; font-weight: bold;">DYNAMICS</span>    <span style="color: #555555;">|</span>   <span style="color: #00ffff; font-weight: bold;">THEORY DEV.</span>`,
-        `<span style="color: #555555;">+======================================================================================================================</span>`,
+        `<span style="color: #555555;">+==================================================================================================================================</span>`,
+        `<span style="color: #555555;">|</span>  <span style="color: #ffffff; font-weight: bold;">STRUCTURAL FRAMEWORKS</span>                           <span style="color: #ffffff; font-weight: bold;">NANOMATERIALS</span>     <span style="color: #555555;">|</span>     <span style="color: #ffffff; font-weight: bold;">DYNAMICS</span>      <span style="color: #555555;">|</span>   <span style="color: #00ffff; font-weight: bold;">THEORY DEV.</span>`,
+        `<span style="color: #555555;">+==================================================================================================================================</span>`,
         `<span style="color: #555555;">|</span>`,
         `<span style="color: #555555;">|</span>   <span style="color: #00ff00; font-weight: bold;">[ RESEARCH MODULES ]</span>                                     <span style="color: #4da6ff; font-weight: bold;">█████╗ ███╗   ██╗██████╗</span>`,
         `<span style="color: #555555;">|</span>                                                                <span style="color: #4da6ff; font-weight: bold;">██╔══██╗████╗  ██║██╔══██╗</span>`,
-        `<span style="color: #555555;">|</span>   <span style="color: #ffffff;">> Electronic structure of Plasmonic systems</span>              <span style="color: #4da6ff; font-weight: bold;">███████║██╔██╗ ██║██║  ██║</span>               <span style="color: #00ffff;">(A)</span><span style="color: #555555;">--</span><span style="color: #00ffff;">[n]</span><span style="color: #555555;">--</span><span style="color: #00ffff;">(B)</span>`,
-        `<span style="color: #555555;">|</span>   <span style="color: #ffffff;">> Homogeneous & Heterogeneous Catalysis</span>                  <span style="color: #4da6ff; font-weight: bold;">██╔══██║██║╚██╗██║██║  ██║</span>                  <span style="color: #ffff00;">|    |</span>`,
-        `<span style="color: #555555;">|</span>   <span style="color: #ffffff;">> Topological Quantum Materials for catalysis</span>                  <span style="color: #4da6ff; font-weight: bold;">██║  ██║██║ ╚████║██████╔╝</span>               <span style="color: #4da6ff;">___V____V___</span>`,
-        `<span style="color: #555555;">|</span>   <span style="color: #ffffff;">> Electronic Structure of Solids and Molecules</span>                                     <span style="color: #4da6ff; font-weight: bold;">╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝</span>               <span style="color: #555555;">/////////////</span>`,
-        `<span style="color: #555555;">|</span>   <span style="color: #ffffff;">> Ab Initio MD & QM/MM</span>                                                                                           <span style="color: #555555;">[ LATTICE ]</span>`,
+        `<span style="color: #555555;">|</span>   <span style="color: #ffffff;">> Electronic structure of Plasmonic systems</span>            <span style="color: #4da6ff; font-weight: bold;">███████║██╔██╗ ██║██║  ██║</span>                <span style="color: #00ffff;">(A)</span><span style="color: #555555;">--</span><span style="color: #00ffff;">[n]</span><span style="color: #555555;">--</span><span style="color: #00ffff;">(B)</span>`,
+        `<span style="color: #555555;">|</span>   <span style="color: #ffffff;">> Homogeneous & Heterogeneous Catalysis</span>                <span style="color: #4da6ff; font-weight: bold;">██╔══██║██║╚██╗██║██║  ██║</span>                 <span style="color: #ffff00;">|    |</span>`,
+        `<span style="color: #555555;">|</span>   <span style="color: #ffffff;">> Topological Quantum Materials for catalysis</span>          <span style="color: #4da6ff; font-weight: bold;">██║  ██║██║ ╚████║██████╔╝</span>                <span style="color: #4da6ff;">___V____V___</span>`,
+        `<span style="color: #555555;">|</span>   <span style="color: #ffffff;">> Electronic Structure of Solids and Molecules</span>         <span style="color: #4da6ff; font-weight: bold;">╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝</span>                <span style="color: #555555;">/////////////</span>`,
+        `<span style="color: #555555;">|</span>   <span style="color: #ffffff;">> Ab Initio MD & QM/MM</span>                                                                           <span style="color: #555555;">[ LATTICE ]</span>`,
         `<span style="color: #555555;">|</span>   <span style="color: #ffffff;">> Biomimetic Chemistry</span>`,
         `<span style="color: #555555;">|</span>`,
         `<span style="color: #555555;">|</span>   <span style="color: #00ff00; font-weight: bold;">[STATUS]: ONLINE</span>                                         <span style="color: #ffffff;">Architectures, Nanomaterials</span>       <span style="color: #00ffff; font-weight: bold;">       AND- Research        </span>`,
-        `<span style="color: #555555;">|</span>                                                                <span style="color: #ffffff;">& Dynamics Research</span>`,
-        `<span style="color: #555555;">+======================================================================================================================</span>`
+        `<span style="color: #555555;">|</span>                                                            <span style="color: #ffffff;">& Dynamics Research</span>`,
+        `<span style="color: #555555;">+==================================================================================================================================</span>`
     ];
 
     function typePrompt(text, index) {
@@ -98,7 +98,9 @@
             document.getElementById('type-target').innerHTML += text.charAt(index);
             setTimeout(() => typePrompt(text, index + 1), typingSpeed); 
         } else {
-            document.getElementById('nav-links').style.display = "inline";
+            // Check if element exists before accessing style to prevent errors if ID is missing
+            const navLinks = document.getElementById('nav-links');
+            if(navLinks) navLinks.style.display = "inline";
             printAsciiArt(0);
         }
     }
@@ -107,20 +109,27 @@
         const container = document.getElementById('ascii-container');
         if (lineIndex < asciiLines.length) {
             const div = document.createElement('div');
+            // Use white-space: pre to preserve ASCII spacing
+            div.style.whiteSpace = "pre"; 
+            div.style.fontFamily = "'Courier New', monospace"; // Ensure monospace
             div.innerHTML = asciiLines[lineIndex];
             container.appendChild(div);
             setTimeout(() => printAsciiArt(lineIndex + 1), asciiLineDelay); 
         } else {
-            document.getElementById('main-content').classList.add('visible');
+             const mainContent = document.getElementById('main-content');
+             if(mainContent) mainContent.classList.add('visible');
         }
     }
 
     window.onload = function() {
-        document.getElementById('type-target').innerHTML = "";
-        document.getElementById('ascii-container').innerHTML = "";
+        const typeTarget = document.getElementById('type-target');
+        const asciiContainer = document.getElementById('ascii-container');
+        
+        if(typeTarget) typeTarget.innerHTML = "";
+        if(asciiContainer) asciiContainer.innerHTML = "";
+        
         setTimeout(() => { typePrompt(promptText, 0); }, startDelay);
     };
 </script>
-
 </body>
 </html>
