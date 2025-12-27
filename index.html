@@ -27,6 +27,7 @@
             margin: 0;
             padding: 20px;
             line-height: 1.6;
+            overflow-x: hidden; /* Prevent scrollbar jump during load */
         }
 
         .container {
@@ -46,6 +47,21 @@
             border-radius: 5px;
             background: #111;
             box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+            min-height: 350px; /* Reserves space so page doesn't jump */
+        }
+
+        /* Helper class to hide lines before they are typed */
+        .hidden-line {
+            display: none;
+        }
+
+        /* Fade in effect for the main content */
+        .fade-in-section {
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        .visible {
+            opacity: 1;
         }
 
         h1, h2, h3 { color: var(--accent-cyan); }
@@ -72,13 +88,18 @@
             margin: 20px 0;
         }
 
-        /* Blinking Cursor */
-        .cursor::after {
-            content: '█';
+        /* Blinking Cursor logic */
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 15px;
+            background-color: var(--accent-green);
             animation: blink 1s infinite;
-            color: var(--accent-green);
+            vertical-align: middle;
         }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        #nav-links { display: none; } /* Hidden until prompt finishes */
     </style>
 </head>
 <body>
@@ -86,81 +107,141 @@
 <div class="container">
 
     <nav>
-        <span class="cursor">root@AND-Research:~$</span> 
-        <a href="#about">./about</a> | 
-        <a href="#research">./research</a> | 
-        <a href="#publications">./publications</a> | 
-        <a href="#contact">./contact</a>
+        <span id="type-target" style="color: var(--accent-green);"></span><span class="cursor"></span>
+        
+        <span id="nav-links">
+            &nbsp;
+            <a href="#about">./about</a> | 
+            <a href="#research">./research</a> | 
+            <a href="#publications">./publications</a> | 
+            <a href="#contact">./contact</a>
+        </span>
     </nav>
     <br><br>
 
-   <div class="terminal-logo">
-<span style="color: #555555;">+======================================================================================================================</span>
-<span style="color: #555555;">|</span>  <span style="color: #ffffff; font-weight: bold;">STRUCTURAL FRAMEWORKS</span>                               <span style="color: #555555;">|</span>    <span style="color: #ffffff; font-weight: bold;">NANOMATERIALS</span>    <span style="color: #555555;">|</span>    <span style="color: #ffffff; font-weight: bold;">DYNAMICS</span>    <span style="color: #555555;">|</span>   <span style="color: #00ffff; font-weight: bold;">THEORY DEV.</span>
-<span style="color: #555555;">+======================================================================================================================</span>
-<span style="color: #555555;">|</span>
-<span style="color: #555555;">|</span>   <span style="color: #00ff00; font-weight: bold;">[ RESEARCH MODULES ]</span>                                    <span style="color: #4da6ff; font-weight: bold;">█████╗ ███╗   ██╗██████╗</span>
-<span style="color: #555555;">|</span>                                                           <span style="color: #4da6ff; font-weight: bold;">██╔══██╗████╗  ██║██╔══██╗</span>
-<span style="color: #555555;">|</span>   <span style="color: #ffffff;">&gt; Electronic structure of Plasmonic systems</span>             <span style="color: #4da6ff; font-weight: bold;">███████║██╔██╗ ██║██║  ██║</span>             <span style="color: #00ffff;">(A)</span><span style="color: #555555;">--</span><span style="color: #00ffff;">[n]</span><span style="color: #555555;">--</span><span style="color: #00ffff;">(B)</span>
-<span style="color: #555555;">|</span>   <span style="color: #ffffff;">&gt; Homogeneous & Heterogeneous Catalysis</span>                 <span style="color: #4da6ff; font-weight: bold;">██╔══██║██║╚██╗██║██║  ██║</span>                <span style="color: #ffff00;">|    |</span>
-<span style="color: #555555;">|</span>   <span style="color: #ffffff;">&gt; Valleytronics & Topological Materials</span>                 <span style="color: #4da6ff; font-weight: bold;">██║  ██║██║ ╚████║██████╔╝</span>             <span style="color: #4da6ff;">___V____V___</span>
-<span style="color: #555555;">|</span>   <span style="color: #ffffff;">&gt; Alignment of Bands</span>                                    <span style="color: #4da6ff; font-weight: bold;">╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝</span>             <span style="color: #555555;">/////////////</span>
-<span style="color: #555555;">|</span>   <span style="color: #ffffff;">&gt; Ab Initio MD & QM/MM</span>                                                                            <span style="color: #555555;">[ LATTICE ]</span>
-<span style="color: #555555;">|</span>   <span style="color: #ffffff;">&gt; Biomimetic Chemistry</span>
-<span style="color: #555555;">|</span>
-<span style="color: #555555;">|</span>   <span style="color: #00ff00; font-weight: bold;">[STATUS]: ONLINE</span>                                        <span style="color: #ffffff;">Architectures, Nanomaterials</span>       <span style="color: #00ffff; font-weight: bold;">      AND- Research      </span>
-<span style="color: #555555;">|</span>                                                           <span style="color: #ffffff;">& Dynamics Research</span>
-<span style="color: #555555;">+======================================================================================================================</span>
-</div>
-
-    <section id="about">
-        <h2>01. ABOUT THE RESEARCHER</h2>
-        <p>
-            Welcome to <strong>AND- Research</strong>. I operate at the intersection of theoretical physics and computational chemistry.
-            My work utilizes high-performance computing (HPC) to model <span class="research-tag">Valleytronics</span>,
-            <span class="research-tag">Topological Materials</span>, and <span class="research-tag">Complex Catalytic Systems</span>.
-        </p>
-    </section>
-
-    <section id="research">
-        <h2>02. RESEARCH AREAS</h2>
-        <p><strong>>> FOCUS: Plasmonic & Heterogeneous Catalysis</strong><br>
-        Investigating reaction pathways on noble metal surfaces enhanced by localized surface plasmon resonance (LSPR).</p>
-        
-        <p><strong>>> FOCUS: Boron Architectures</strong><br>
-        Calculating band structures of novel boron allotropes using Density Functional Theory (DFT).</p>
-        
-        <div class="equation-box">
-            <strong>Theoretical Framework:</strong><br>
-            We employ the Kohn-Sham formulation for many-body systems:<br><br>
-            $$ \left( -\frac{\hbar^2}{2m} \nabla^2 + V_{eff}(\mathbf{r}) \right) \psi_i(\mathbf{r}) = \varepsilon_i \psi_i(\mathbf{r}) $$
+    <div class="terminal-logo" id="ascii-container">
         </div>
-    </section>
 
-    <section id="publications">
-        <h2>03. LATEST OUTPUT</h2>
-        <ul>
-            <li>[2024] <em>"Valley-polarized Quantum Anomalous Hall Effect in Boron Monolayers"</em> - <strong>Journal of Phys. Chem. C</strong></li>
-            <li>[2023] <em>"Ab Initio MD simulations of Enzymatic proton transfer"</em> - <strong>Journal of Chemical Physics</strong></li>
-        </ul>
-    </section>
+    <div id="main-content" class="fade-in-section">
+        <section id="about">
+            <h2>01. ABOUT THE RESEARCHER</h2>
+            <p>
+                Welcome to <strong>AND- Research</strong>. I operate at the intersection of theoretical physics and computational chemistry.
+                My work utilizes high-performance computing (HPC) to model <span class="research-tag">Valleytronics</span>,
+                <span class="research-tag">Topological Materials</span>, and <span class="research-tag">Complex Catalytic Systems</span>.
+            </p>
+        </section>
 
-    <section id="contact">
-        <h2>04. INITIALIZE CONNECTION</h2>
-        <p>
-            To collaborate on theory development or request code access:<br>
-            > Email: <a href="mailto:snehithav.che@gmail.com">snehithav.che@gmail.com</a><br>
-            > GitHub: <a href="#">@snehithavchem</a>
-        </p>
-    </section>
+        <section id="research">
+            <h2>02. RESEARCH AREAS</h2>
+            <p><strong>>> FOCUS: Plasmonic & Heterogeneous Catalysis</strong><br>
+            Investigating reaction pathways on noble metal surfaces enhanced by localized surface plasmon resonance (LSPR).</p>
+            
+            <p><strong>>> FOCUS: Boron Architectures</strong><br>
+            Calculating band structures of novel boron allotropes using Density Functional Theory (DFT).</p>
+            
+            <div class="equation-box">
+                <strong>Theoretical Framework:</strong><br>
+                We employ the Kohn-Sham formulation for many-body systems:<br><br>
+                $$ \left( -\frac{\hbar^2}{2m} \nabla^2 + V_{eff}(\mathbf{r}) \right) \psi_i(\mathbf{r}) = \varepsilon_i \psi_i(\mathbf{r}) $$
+            </div>
+        </section>
 
-    <footer>
-        <br><br>
-        <hr style="border-color: #333;">
-        <small style="color: #555;">System.exit(0) // © 2025 AND- Research</small>
-    </footer>
+        <section id="publications">
+            <h2>03. LATEST OUTPUT</h2>
+            <ul>
+                <li>[2024] <em>"Valley-polarized Quantum Anomalous Hall Effect in Boron Monolayers"</em> - <strong>Journal of Phys. Chem. C</strong></li>
+                <li>[2023] <em>"Ab Initio MD simulations of Enzymatic proton transfer"</em> - <strong>Journal of Chemical Physics</strong></li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2>04. INITIALIZE CONNECTION</h2>
+            <p>
+                To collaborate on theory development or request code access:<br>
+                > Email: <a href="mailto:snehithav.che@gmail.com">snehithav.che@gmail.com</a><br>
+                > GitHub: <a href="#">@snehithavchem</a>
+            </p>
+        </section>
+
+        <footer>
+            <br><br>
+            <hr style="border-color: #333;">
+            <small style="color: #555;">System.exit(0) // © 2025 AND- Research</small>
+        </footer>
+    </div>
 
 </div>
+
+<script>
+    // 1. The Prompt Text to type
+    const promptText = "root@AND-Research:~$";
+    
+    // 2. The ASCII Art Data (Stored as an array of HTML strings to preserve colors)
+    const asciiLines = [
+        `<span style="color: #555555;">+======================================================================================================================</span>`,
+        `<span style="color: #555555;">|</span>  <span style="color: #ffffff; font-weight: bold;">STRUCTURAL FRAMEWORKS</span>                              <span style="color: #555555;">|</span>    <span style="color: #ffffff; font-weight: bold;">NANOMATERIALS</span>    <span style="color: #555555;">|</span>    <span style="color: #ffffff; font-weight: bold;">DYNAMICS</span>    <span style="color: #555555;">|</span>   <span style="color: #00ffff; font-weight: bold;">THEORY DEV.</span>`,
+        `<span style="color: #555555;">+======================================================================================================================</span>`,
+        `<span style="color: #555555;">|</span>`,
+        `<span style="color: #555555;">|</span>   <span style="color: #00ff00; font-weight: bold;">[ RESEARCH MODULES ]</span>                                     <span style="color: #4da6ff; font-weight: bold;">█████╗ ███╗   ██╗██████╗</span>`,
+        `<span style="color: #555555;">|</span>                                                                <span style="color: #4da6ff; font-weight: bold;">██╔══██╗████╗  ██║██╔══██╗</span>`,
+        `<span style="color: #555555;">|</span>   <span style="color: #ffffff;">> Electronic structure of Plasmonic systems</span>             <span style="color: #4da6ff; font-weight: bold;">███████║██╔██╗ ██║██║  ██║</span>              <span style="color: #00ffff;">(A)</span><span style="color: #555555;">--</span><span style="color: #00ffff;">[n]</span><span style="color: #555555;">--</span><span style="color: #00ffff;">(B)</span>`,
+        `<span style="color: #555555;">|</span>   <span style="color: #ffffff;">> Homogeneous & Heterogeneous Catalysis</span>                 <span style="color: #4da6ff; font-weight: bold;">██╔══██║██║╚██╗██║██║  ██║</span>                 <span style="color: #ffff00;">|    |</span>`,
+        `<span style="color: #555555;">|</span>   <span style="color: #ffffff;">> Valleytronics & Topological Materials</span>                 <span style="color: #4da6ff; font-weight: bold;">██║  ██║██║ ╚████║██████╔╝</span>              <span style="color: #4da6ff;">___V____V___</span>`,
+        `<span style="color: #555555;">|</span>   <span style="color: #ffffff;">> Alignment of Bands</span>                                    <span style="color: #4da6ff; font-weight: bold;">╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝</span>              <span style="color: #555555;">/////////////</span>`,
+        `<span style="color: #555555;">|</span>   <span style="color: #ffffff;">> Ab Initio MD & QM/MM</span>                                                                                  <span style="color: #555555;">[ LATTICE ]</span>`,
+        `<span style="color: #555555;">|</span>   <span style="color: #ffffff;">> Biomimetic Chemistry</span>`,
+        `<span style="color: #555555;">|</span>`,
+        `<span style="color: #555555;">|</span>   <span style="color: #00ff00; font-weight: bold;">[STATUS]: ONLINE</span>                                        <span style="color: #ffffff;">Architectures, Nanomaterials</span>       <span style="color: #00ffff; font-weight: bold;">       AND- Research       </span>`,
+        `<span style="color: #555555;">|</span>                                                               <span style="color: #ffffff;">& Dynamics Research</span>`,
+        `<span style="color: #555555;">+======================================================================================================================</span>`
+    ];
+
+    // --- FUNCTION 1: Type out the Prompt char by char ---
+    function typePrompt(text, index) {
+        if (index < text.length) {
+            document.getElementById('type-target').innerHTML += text.charAt(index);
+            setTimeout(() => typePrompt(text, index + 1), 50); // Speed of typing (ms)
+        } else {
+            // Animation Done: Show links and start printing ASCII art
+            document.getElementById('nav-links').style.display = "inline";
+            printAsciiArt(0);
+        }
+    }
+
+    // --- FUNCTION 2: Print ASCII Art line by line (faster) ---
+    function printAsciiArt(lineIndex) {
+        const container = document.getElementById('ascii-container');
+        
+        if (lineIndex < asciiLines.length) {
+            // Create a div for the new line
+            const div = document.createElement('div');
+            div.innerHTML = asciiLines[lineIndex];
+            container.appendChild(div);
+            
+            // Scroll to bottom of terminal if needed (optional)
+            // container.scrollTop = container.scrollHeight;
+
+            // Call next line with a small delay (15ms = very fast "modem" look)
+            setTimeout(() => printAsciiArt(lineIndex + 1), 15); 
+        } else {
+            // Animation Done: Fade in the rest of the page
+            document.getElementById('main-content').classList.add('visible');
+        }
+    }
+
+    // --- START SEQUENCE ---
+    window.onload = function() {
+        // Clear containers just in case
+        document.getElementById('type-target').innerHTML = "";
+        document.getElementById('ascii-container').innerHTML = "";
+        
+        // Start typing after 500ms delay
+        setTimeout(() => {
+            typePrompt(promptText, 0);
+        }, 500);
+    };
+</script>
 
 </body>
 </html>
